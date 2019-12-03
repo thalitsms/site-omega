@@ -1,0 +1,279 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600|Orbitron:400,700&display=swap');
+
+/* Alteração do Box Model para border-box */
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Etapa 01 
+Regras para o site inteiro */
+html { font-size: 18px; }
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url(../imagens/textura-fundo.png);
+    background-attachment: fixed;
+}
+
+body, p, h1, h2, h3, figure { /* CSS Reset */
+    margin: 0;
+    padding: 0;
+}
+
+/* Habilitar o modo flex */
+h1, h1 a, nav, nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    min-height: 60px;
+    
+}
+
+h1 {
+    font-family: Orbitron, "Segoe UI";
+    height: 60px;
+    font-size: 2.2rem;
+}
+
+h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 img {
+    width: 50px;
+    padding-right: 5px;
+}
+
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-family: Orbitron, "Segoe UI";
+    font-weight: bold;
+    font-size: 0.9rem;
+    
+    width: 25%;
+    min-height: 50px;
+}
+
+nav a:hover, nav a:focus {
+    background-color: black;
+    color: white;
+}
+
+img { max-width: 100%; }
+
+header, footer {
+    background-color: rgba(245,245,245,0.8);
+    text-align: center;
+}
+
+header {
+    border-bottom: solid 1px;
+    margin-bottom: 15px;
+    background-color: #aaaad59c;
+}
+
+footer {
+    border-top: solid 1px;
+    padding: 1%;
+    background-color: #aaaad59c;
+}
+
+main {
+    width: 95%;
+    margin: auto;
+}
+
+article {
+    background-color: white;
+    box-shadow: black 1px 1px 5px;
+    margin: 15px 0;
+    padding: 2%;
+}
+
+h2, h3, p { padding: 1% 0; }
+
+h2 { 
+    font-family: Orbitron, sans-serif;
+    font-size: 1.3rem;
+}
+
+p { font-size: 0.9rem; }
+
+footer img { margin: 0 10px; }
+
+footer a { text-decoration: none; }
+
+footer p { 
+    font-size: 0.6rem; 
+    font-weight: bold;
+}
+
+.centralizar { text-align: center; }
+
+/*regras para personalizar os controles do slider*/
+.slick-prev, .slick-next {
+    width: 50px;
+    height: 50px;
+    top: 40%;
+}
+
+.slick-prev {
+    left: 2%;
+    z-index: 10;
+    }
+
+
+.slick-next {
+    right: 2%;
+}
+
+
+.slick-prev:before, .slick-next:before{
+    font-size: 2rem;
+}
+
+h3{
+    font-family: Orbitron;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    text-shadow: black 1 px 1px 2 px;
+}
+
+section{
+    margin: 2% 0;
+}
+ /* regras para o formuláio*/
+ form{
+     max-width: 700px;
+     margin: auto;
+     width: 95%;
+ }
+
+ input, textarea{
+     border: solid;
+     font-size: 0.5rem;
+     width: 100%;
+     padding: 1.5%;
+
+ }
+
+ label{
+     font-weight: bold;
+ }
+
+ button{
+     border: none;
+     padding: 15px;
+     font-weight: bold;
+     background-color: #aaaad59c;
+     color: black;
+ }
+
+ button:hover, button:focus{
+    background-color: #7171b9;
+    cursor: pointer;
+ }
+
+
+/* Etapa 02
+Media Queries */
+@media screen and (min-width: 700px){
+    header div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    h1 { margin-left: 2.5%; }
+    nav { margin-right: 2.5%; }
+    
+    header {
+        position: fixed;
+        z-index: 10; /*respeita a order dos elementos*/
+        width: 100%;
+        top: 0; 
+    }
+    
+    main { margin-top: 70px; }
+}
+
+   #grupo{ /*é uma div envolvendo as sections*/
+       display: flex;
+       flex-wrap: wrap; /*quebra da row*/ 
+       justify-content: space-between;
+   }
+
+   section, figure{
+    width: 49%;
+   }
+
+
+/* Exercício: criar uma media query para telas a partir
+de 870px com as seguintes regras:
+
+-elemento raíz: tamanho de fonte de 20px
+-cabeçalho: altura de 70px
+-div contida no cabeçalho: altura com valor HERDADO (inherit)
+-conteúdo principal: margem superior de 80px
+-imagem do logotipo: largura 60px */
+@media screen and (min-width: 870px){
+    html { font-size: 20px; }
+    header { /* PAI */
+        height: 70px; 
+    }
+    header div { /* FILHO */
+        height: inherit; /* Herdar o valor do pai */
+    }
+    main { margin-top: 80px; }
+    h1 img { width: 60px; }
+}
+
+/* Exercício! 
+Cria uma media query para telas a partir de 1000px,
+com as seguintes regras:
+
+-div contida no cabeçalho E conteúdo principal:
+largura máxima de 1000px, margem esquerda e direita automáticas e
+largura de 100%
+
+-elemento raíz: tamanho da fonte de 22px
+
+-titulo do site: margem esquerda zerada
+
+-menu: largura de 65%, margem direita zerada
+
+*/
+@media screen and (min-width: 1000px){
+    header div, main {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    html { font-size: 22px; }
+    
+    h1 { margin-left: 0; }
+    nav { 
+        margin-right: 0;
+        width: 65%; /* OPCIONAL */
+    }
+    header { height: 80px; } /* OPCIONAL */
+    main { margin-top: 90px; } /* OPCIONAL */
+}
+
+
+
+
+
+
+
+
